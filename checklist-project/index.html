@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Generator | Создайте идеальный чек-лист</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✅</text></svg>">
+</head>
+<body>
+<!-- Шапка сайта -->
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-tasks"></i>
+            <h1>CheckList<span>Pro</span></h1>
+        </div>
+        <nav class="nav">
+            <button class="nav-btn active" data-page="home">Главная</button>
+            <button class="nav-btn" data-page="templates">Шаблоны</button>
+            <button class="nav-btn" data-page="my-lists">Мои чек-листы</button>
+            <button class="nav-btn" data-page="creator">Конструктор</button>
+        </nav>
+        <div class="user-actions">
+            <button id="themeToggle" class="icon-btn" title="Сменить тему">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="exportBtn" class="btn btn-outline">Экспорт</button>
+        </div>
+    </div>
+</header>
+
+<!-- Основной контент -->
+<main class="main-content">
+    <!-- Главная страница -->
+    <section id="home-page" class="page active">
+        <div class="hero">
+            <div class="container">
+                <h2>Создайте идеальный чек-лист за минуту</h2>
+                <p class="subtitle">Ничего не забудьте. Организуйте свои задачи с помощью нашего простого конструктора</p>
+                <button id="startCreating" class="btn btn-primary btn-large">
+                    <i class="fas fa-plus-circle"></i> Начать создавать
+                </button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Быстро</h3>
+                    <p>Создавайте чек-листы за секунды с помощью готовых шаблонов</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>Делитесь</h3>
+                    <p>Отправляйте ссылки на ваши списки друзьям и коллегам</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Доступно</h3>
+                    <p>Работает на любом устройстве, сохраняется в вашем браузере</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tags"></i>
+                    <h3>Бесплатно</h3>
+                    <p>Все основные функции абсолютно бесплатны</p>
+                </div>
+            </div>
+
+            <div class="templates-preview">
+                <h3>Популярные шаблоны</h3>
+                <div class="templates-grid">
+                    <!-- Шаблоны будут загружены через JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Страница шаблонов -->
+    <section id="templates-page" class="page">
+        <div class="container">
+            <h2>Готовые шаблоны</h2>
+            <div class="categories">
+                <button class="category-btn active" data-category="all">Все</button>
+                <button class="category-btn" data-category="travel">Путешествия</button>
+                <button class="category-btn" data-category="events">События</button>
+                <button class="category-btn" data-category="work">Работа</button>
+                <button class="category-btn" data-category="home">Дом</button>
+                <button class="category-btn" data-category="health">Здоровье</button>
+            </div>
+            <div class="templates-container">
+                <!-- Шаблоны будут загружены через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Страница "Мои чек-листы" -->
+    <section id="my-lists-page" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2>Мои чек-листы</h2>
+                <button id="createNewList" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Создать новый
+                </button>
+            </div>
+            <div class="saved-lists">
+                <!-- Сохраненные чек-листы будут загружены через JS -->
+                <div class="empty-state" id="empty-lists-message">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>У вас пока нет чек-листов</h3>
+                    <p>Создайте свой первый чек-лист или выберите готовый шаблон</p>
+                    <button id="createFirstList" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Создать первый чек-лист
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Конструктор чек-листов -->
+    <section id="creator-page" class="page">
+        <div class="container">
+            <div class="creator-header">
+                <h2>Конструктор чек-листов</h2>
+                <div class="creator-actions">
+                    <button id="saveList" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Сохранить
+                    </button>
+                    <button id="shareList" class="btn btn-outline">
+                        <i class="fas fa-share"></i> Поделиться
+                    </button>
+                    <button id="clearList" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Очистить
+                    </button>
+                </div>
+            </div>
+
+            <div class="creator-layout">
+                <!-- Левая панель: шаблоны -->
+                <aside class="sidebar">
+                    <h3><i class="fas fa-layer-group"></i> Шаблоны</h3>
+                    <div class="templates-sidebar">
+                        <!-- Шаблоны будут загружены через JS -->
+                    </div>
+                    <div class="sidebar-section">
+                        <h3><i class="fas fa-palette"></i> Настройки</h3>
+                        <div class="settings">
+                            <div class="setting">
+                                <label>
+                                    <input type="checkbox" id="progressBarToggle" checked>
+                                    Показывать прогресс-бар
+                                </label>
+                            </div>
+                            <div class="setting">
+                                <label>Цветовая тема:</label>
+                                <select id="colorTheme">
+                                    <option value="default">Синяя</option>
+                                    <option value="green">Зеленая</option>
+                                    <option value="purple">Фиолетовая</option>
+                                    <option value="orange">Оранжевая</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Центральная рабочая область -->
+                <div class="workspace">
+                    <div class="list-header">
+                        <input type="text" id="listTitle" placeholder="Название вашего чек-листа" value="Мой новый чек-лист">
+                        <div class="list-stats">
+                            <span id="progressText">0/0 выполнено</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="list-controls">
+                        <button id="addSection" class="btn btn-outline">
+                            <i class="fas fa-folder-plus"></i> Добавить раздел
+                        </button>
+                        <button id="addItem" class="btn btn-outline">
+                            <i class="fas fa-plus"></i> Добавить пункт
+                        </button>
+                    </div>
+
+                    <div class="checklist-container" id="checklistContainer">
+                        <!-- Здесь будут пункты чек-листа -->
+                        <div class="checklist-empty">
+                            <i class="fas fa-clipboard"></i>
+                            <p>Ваш чек-лист пуст. Добавьте первый пункт или загрузите шаблон.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая панель: действия -->
+                <aside class="actions-sidebar">
+                    <h3><i class="fas fa-cog"></i> Действия</h3>
+                    <div class="action-buttons">
+                        <button id="exportPDF" class="action-btn">
+                            <i class="fas fa-file-pdf"></i> Экспорт в PDF
+                        </button>
+                        <button id="printList" class="action-btn">
+                            <i class="fas fa-print"></i> Печать
+                        </button>
+                        <button id="duplicateList" class="action-btn">
+                            <i class="fas fa-copy"></i> Дублировать
+                        </button>
+                        <button id="addCollaborator" class="action-btn">
+                            <i class="fas fa-user-plus"></i> Добавить участника
+                        </button>
+                    </div>
+
+                    <div class="share-section">
+                        <h3><i class="fas fa-link"></i> Поделиться</h3>
+                        <div class="share-link">
+                            <input type="text" id="shareUrl" readonly placeholder="Ссылка появится после сохранения">
+                            <button id="copyLink" class="btn btn-small">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <p class="share-note">Отправьте эту ссылку, чтобы другие могли просматривать чек-лист</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Футер -->
+<footer class="footer">
+    <div class="container">
+        <p>Checklist Generator © 2023. Создавайте, организуйте, достигайте.</p>
+        <p class="footer-note">Данные сохраняются в вашем браузере</p>
+    </div>
+</footer>
+
+<!-- Модальное окно для добавления пункта -->
+<div id="addItemModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Добавить новый пункт</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="itemText">Текст пункта:</label>
+                <input type="text" id="itemText" placeholder="Например: Купить билеты">
+            </div>
+            <div class="form-group">
+                <label for="itemSection">Раздел:</label>
+                <select id="itemSection">
+                    <option value="main">Основной список</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="itemImportant">
+                    <i class="fas fa-exclamation-circle"></i> Важный пункт
+                </label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline modal-cancel">Отмена</button>
+            <button class="btn btn-primary modal-confirm">Добавить</button>
+        </div>
+    </div>
+</div>
+
+<!-- Уведомления -->
+<div id="notification" class="notification"></div>
+
+<!-- Скрипты -->
+<script src="script.js"></script>
+</body>
+</html>
